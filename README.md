@@ -1,2 +1,2 @@
 # Breves Exercícios de React.js
-### Testes de conehcimento
+### Testes de conhecimento
