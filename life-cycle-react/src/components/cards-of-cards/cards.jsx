@@ -15,6 +15,7 @@ async function getCards(deckId) {
 
 class DeckOfCards extends Component {
     constructor() {
+        console.log('consturctor')
         super()
         this.state = {
             cards: []
@@ -22,9 +23,9 @@ class DeckOfCards extends Component {
     }
 
     async componentDidMount() {
+        console.log('componentDidMount')
         const deckId = await createDeck();
         const data = await getCards(deckId);
-        console.log(data)
 
         this.setState({
             cards: data.cards
@@ -33,6 +34,7 @@ class DeckOfCards extends Component {
 
 
     render() {
+        console.log('render')
         return(
             <>
             <h1>Deck Of Cards:</h1>
