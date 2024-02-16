@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react';
+import FormInputs from '../forms-varios-inputs/form';
 import './cards.css';
 
 async function createDeck() {
@@ -8,7 +9,7 @@ async function createDeck() {
 }
 
 async function getCards(deckId) {
-    const numberOfCards = 7
+    const numberOfCards = 10
     const response = await fetch(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=${numberOfCards}`);
     return await response.json();
 }
@@ -21,6 +22,9 @@ const CardsList = (props) => {
                 return (
                     <li key={index}>
                         <img src={card.image} alt={card.value} />
+                        <p>
+                            {card.value} of {card.suit}
+                        </p>
                     </li>
                 )
             })
@@ -49,16 +53,24 @@ const DeckOfCards = () => {
     }, [])
     // Ao passar um array vazio, estamos dizendo para o useEffect para carregar só uma vez.
 
+    const addCard = (newCard) => {
+        console.log(newCard)
+        setDeck({
+            cards: [...deck.cards, newCard]
+        })
+    }
+
 
     return (
         <>
             <h1>Deck Of Cards</h1>
+            <FormInputs addCard={addCard} />
             <section> 
-            {
-            deck.cards.length > 0 ? 
-            <CardsList cards={deck.cards}/> : 
-            <h2>Nenhuma carta encontrada</h2>
-            }
+                {
+                deck.cards.length > 0 ? 
+                <CardsList cards={deck.cards}/> : 
+                <h2>Nenhuma carta encontrada</h2>
+                }
             </section>
         </>
     )
@@ -66,3 +78,4 @@ const DeckOfCards = () => {
 
 
 export default DeckOfCards;
+
