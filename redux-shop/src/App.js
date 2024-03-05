@@ -2,16 +2,18 @@ import { Header } from "./components/header";
 import { createGlobalStyle } from "styled-components";
 import { BrowserRouter } from "react-router-dom";
 import { AppRoutes } from "./pages/routes";
+import { Provider } from "react-redux";
+import store from "./components/store/store";
 
 function App() {
   return (
-    <>
+    <Provider store={store}>
       <GlobalStyle />
       <BrowserRouter>
         <Header />
         <AppRoutes />
       </BrowserRouter>
-    </>
+    </Provider>
   );
 }
 

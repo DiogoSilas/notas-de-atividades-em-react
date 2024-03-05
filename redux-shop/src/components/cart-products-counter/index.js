@@ -2,13 +2,17 @@ import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartPlus } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 export const CartProductsCounter = () => {
+
+  const cartProducts = useSelector(state => state.cartProducts)
+
   return (
     <Container>
       <Link to="/cart-products">
         <FontAwesomeIcon icon={faCartPlus} />
-        <span>0</span>
+        <span>{cartProducts.length}</span>
       </Link>
     </Container>
   );

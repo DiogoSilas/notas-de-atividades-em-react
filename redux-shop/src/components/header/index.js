@@ -1,9 +1,10 @@
 import styled from "styled-components";
 import { CartProductsCounter } from "../cart-products-counter";
-
 import { Link } from 'react-router-dom'
 
+
 const Header = () => {
+
   return (
     <Container>
       <Link to="/">

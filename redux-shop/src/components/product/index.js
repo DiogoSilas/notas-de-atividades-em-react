@@ -1,6 +1,11 @@
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
+import { addProductsToCart } from "../store/actions/cart";
 
 const Product = ({ name, price }) => {
+
+  const dispatch = useDispatch()
+
   return (
     <ListItem>
       <div>
@@ -13,7 +18,7 @@ const Product = ({ name, price }) => {
           })}
         </p>
       </div>
-      <button>
+      <button onClick={() => dispatch(addProductsToCart({ name, price }))}>
         Adicionar ao carrinho
       </button>
     </ListItem>
